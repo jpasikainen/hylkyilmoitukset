@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const App = () => {
-  const [message, setMessage] = useState('')
+function App() {
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     axios
       .get('http://localhost:5000/api/helloworld')
-      .then(response => {
-        console.log(response)
-        setMessage(response.data.message)
-      })
-  }, [])
+      .then((response) => {
+        console.log(response);
+        setMessage(response.data.message);
+      });
+  }, []);
 
   return (
     <div>
       {message}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
