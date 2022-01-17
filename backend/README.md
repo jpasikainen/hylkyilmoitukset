@@ -7,7 +7,7 @@ Make sure you have Python 3.8 or higher and pip installed. Activate the virtual 
 ```bash
 python3 -m venv venv
 source venv/bin/activate
-pip install -r ./dev-requirements.txt
+pip install -r ./requirements.txt
 ```
 
 After this you can start the api
