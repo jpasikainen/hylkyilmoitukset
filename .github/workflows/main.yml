@@ -19,9 +19,9 @@ jobs:
       - name: Install backend dependencies
         working-directory: backend
         run: pip install -r ./requirements.txt
+      - name: Run pylint
+        run: pylint backend --rcfile=.pylintrc
       - name: run pytest
         working-directory: backend
-        run: pytest
-      - name: run acceptance tests
-        working-directory: backend
-        run: robot tests
+        run: coverage run --branch -m pytest
+
