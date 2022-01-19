@@ -20,7 +20,8 @@ jobs:
         working-directory: backend
         run: pip install -r ./requirements.txt
       - name: Run pylint
-        run: pylint backend --rcfile=.pylintrc
+        working-directory: backend
+        run: pylint src --rcfile=.pylintrc
       - name: run pytest
         working-directory: backend
         run: coverage run --branch -m pytest
