@@ -9,9 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: backend
 
     steps:
       - uses: actions/checkout@v2
@@ -20,8 +17,11 @@ jobs:
         with:
           python-version: 3.8
       - name: Install backend dependencies
+        working-directory: backend
         run: pip install -r ./requirements.txt
       - name: run pytest
+        working-directory: backend
         run: pytest
       - name: run acceptance tests
+        working-directory: backend
         run: robot tests
