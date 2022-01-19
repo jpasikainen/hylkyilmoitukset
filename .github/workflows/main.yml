@@ -12,6 +12,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
       - name: Set up Python 3.8
         uses: actions/setup-python@v2
         with:
@@ -29,6 +30,15 @@ jobs:
         working-directory: backend
         run: coverage xml
       - name: Coverage report to Codecov
-        working-directory: backend
         run: bash <(curl -s https://codecov.io/bash)
+      - name: install frontend dependencies
+        working-directory: frontend
+        run: npm ci
+      - name: frontend tests
+        working-directory: frontend
+        run: CI=true npm test
+      - name: run eslint
+        working-directory: frontend
+        run: npx eslint --fix --ext .js,.jsx .
+        
 
